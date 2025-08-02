@@ -1,3 +1,55 @@
-docker build -t node-app .
-docker run -d -p 4000:3000 --name myc node-app
+Docker Hub credetials: 
+username : sandipm9903
+pass : 3108
+
+✅ Step 1: Build and Run Docker Image Locally
+# Build Docker image from Dockerfile
+docker build -t simple-app .
+
+# Run the container and map ports (host:container)
+docker run -d -p 4000:3000 --name myc simple-app
+
+# Check running containers
 docker ps
+
+# Check available Docker images
+docker images
+
+✅ Step 2: Push Image to Docker Hub
+# Login to Docker Hub
+docker login -u sandipm9903
+
+# Tag the image with your Docker Hub username
+docker tag simple-app sandipm9903/simple-app
+
+# Push the image to Docker Hub
+docker push sandipm9903/simple-app
+
+✅ Step 3: Pull and Run Image from Docker Hub
+# Pull the image from Docker Hub
+docker pull sandipm9903/simple-app
+
+# Run a container from the pulled image
+docker run -d -p 4000:3000 --name my-container sandipm9903/simple-app
+
+✅ If using another account like camney20, replace with:
+docker pull camney20/simple-app
+docker run -d -p 4000:3000 --name my-container camney20/simple-app
+
+🧹 Step 4: Docker Cleanup (Optional)
+# Force remove container
+docker rm my-container --force
+
+# Remove all Docker images
+docker rmi -f $(docker images -q)
+
+# Check remaining images and containers
+docker images
+docker ps
+
+📜 Bonus Commands
+# Show your terminal command history
+history
+
+# Get help for docker run command
+docker run --help
