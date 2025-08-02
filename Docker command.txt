@@ -12,6 +12,9 @@ docker run -d -p 4000:3000 --name myc simple-app
 # Check running containers
 docker ps
 
+#Stop the running containers
+docker stop myc
+
 # Check available Docker images
 docker images
 
